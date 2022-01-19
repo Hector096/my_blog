@@ -1,10 +1,12 @@
 # My Blog
 
-> Demo Rails app for blogging
+> Fully functional blog app website that will show the list of posts and empower readers to interact with them by adding comments and liking posts.
 
 ## Built With
 
 - Ruby on Rails
+- Rspec
+- PostgreSql
 
 ## To get a local copy run the following steps:
 - Copy this link [this link](https://github.com/Hector096/my_blog/)
