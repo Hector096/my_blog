@@ -1,10 +1,25 @@
-<h1>users#show</h1>
-<ul>
-  <li>User name <span>number of posts</span></li>
-  <li>
-    <h2>Bio</h2>
-    <p>Lorem ipsum amet USERS</p>
-  </li>
-  <li>Post 1</li>
-  <li>Post 2</li>
-</ul>
+<%= render partial:'user',locals: { user: @user } %>
+<div class="m-5">
+<div class="card mb-3">
+  <div class="card-body">
+    <h4>Bio</h4>
+    <%= @user.bio %>
+  </div>
+</div>
+
+<% @user.latest_posts.each do |post| %>
+  <div class="card mb-3">
+    <div class="card-body">
+    <h5>Post <%= post.id%></h5>
+      <h3 class="pt-2"><%=post.title%></h3>
+      <p><%= post.text %></p>
+      <h5 class="text-end">Comments: <%=post.comments_counter%>  Likes: <%=post.likes_counter%></h5>
+    </div>
+    </div>
+<% end %>
+</div>
+<div class="text-center mb-3 centro-user-show-button">
+  <a>
+    <%= link_to "See all posts", user_posts_path(@user), :class => "btn btn-primary" %>
+  </a>
+</div>
