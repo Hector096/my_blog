@@ -15,7 +15,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = current_user.posts.new(params.require(:post).permit(:title, :text))
+    post = current_user.posts.new(post_params)
     @user = current_user
     @posts = @user.posts
 
@@ -30,5 +30,12 @@ class PostsController < ApplicationController
         end
       end
     end
+   end
+  end
+
+
+  private
+  def post_params
+    params.require(:post).permit(:title, :text)
   end
 end
