@@ -1,0 +1,15 @@
+<div class="text-center mt-5">
+<%= form_with model: @post, url: user_posts_path, method: :post, scope: :post, local: true do |form| %>
+  <div class="d-grid gap-2 col-6 mx-auto mt-3">
+    <%= form.text_field :title, placeholder: "Title", required: true %>
+  </div>
+
+  <div class="d-grid gap-2 col-6 mx-auto mt-3">
+    <%= form.text_area :text, size: "100x15", placeholder: "Post", required: true %>
+  </div>
+
+  <div class="d-grid gap-2 col-6 mx-auto mt-3">
+    <%= form.submit "Post", class: "btn btn-primary", disable_with: "Loading.." %>
+  </div>
+<% end %>
+</div>
