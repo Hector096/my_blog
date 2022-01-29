@@ -5,6 +5,11 @@ class Post < ApplicationRecord
   after_save :update_post
   after_destroy :decrement_likes
 
+  validates :title, presence: true
+  validates :title, length: { maximum: 250 }
+  validates :comments_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :likes_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+
   def update_post
     author.increment!(:posts_counter)
   end
@@ -14,6 +19,6 @@ class Post < ApplicationRecord
   end
 
   def five_recent_comments
-    comments.order('created_at Desc').limit(5)
+    comments.order('created_at Desc').includes(:author).limit(5)
   end
 end
