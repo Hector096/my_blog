@@ -9,7 +9,12 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        redirect_to user_post_path(@post.author.id, @post.id) if @comment.save
+        if @comment.save
+          flash[:success] = 'Comment saved successfully'
+          redirect_to user_post_path(@post.author.id, @post.id)
+        else
+          flash.now[:error] = 'Error: Comment could not be saved'
+        end
       end
     end
   end
